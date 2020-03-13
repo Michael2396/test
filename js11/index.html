@@ -11,6 +11,7 @@
     </div>
     <div class="test2">
         <div class="test2-2"></div>
+        <div class="test2-2"></div>
     </div>
     <div class="test3">
         <div class="test3-3"></div>
@@ -18,13 +19,13 @@
         <div class="test3-3"></div>
     </div>
     <span class="sd"></span>
+    <span class="sd"></span>
 
 </div>
 <script>
     var obj = {};
     // var id = document.getElementById('test').children;
     var cla = document.getElementsByClassName('clxass');
-    var arr = [];
 
     function handler(el) {
         if (!el) {
@@ -34,7 +35,10 @@
             for (var i = 0; i < el.length; i++) {
                 if (typeof el[i] === 'object') {
                     if (el[i].classList.value === el[i].classList.value) {
-                        arr.push(el[i].classList.value);
+                        if (obj[el[i].classList.value])
+                            ++obj[el[i].classList.value];
+                        else
+                            obj[el[i].classList.value] = 1;
                     }
                     if (el[i].children) {
                         handler(el[i].children)
@@ -42,16 +46,9 @@
                 }
             }
         }
-
     }
 
     handler(cla);
-    arr.forEach(function(a){
-        if (obj[a])
-            ++obj[a];
-        else
-            obj[a] = 1;
-    });
     console.log(obj)
 </script>
 </body>
